@@ -1,0 +1,28 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Main Stylesheet
+
+We will call each of our .scsss files in here. As you can see we will put
+the _tablet whithin the tablet block and the _mobile within the mobile block. 
+******************************************************************/
+
+// Import MIXINS
+@import "_mixins";
+
+// Import DEFAULTS
+@import "_defaults";
+
+// desktop
+@import "_desktop";
+
+// If Tablet
+@media only screen and (min-width: $tablet-breakpoint) and (max-width: $desktop-breakpoint) {
+  @import "_tablet";
+}
+
+// If Mobile
+@media only screen and (max-width: $mobile-breakpoint) {
+  @import "_mobile";
+}

@@ -1,0 +1,66 @@
+/****************************************************************************
+_mobile.scss
+
+Site Name:
+Author:
+Date:
+
+As the name suggests, this is the CSS for mobile browsers. Please put your custom
+CSS after the note.
+*****************************************************************************/
+
+/* Mobile Grid
+* For stacking full width columns, please use the new class .mobile-full */
+.mobile-one { width: 6.5%; }
+.mobile-two { width: 15%; }
+.mobile-three { width: 23.5%; }
+.mobile-four { width: 32%; }
+.mobile-five { width: 40.5%; }
+.mobile-six { width: 49.0%; }
+.mobile-seven { width: 57.5%; }
+.mobile-eight { width: 66%; }
+.mobile-nine { width: 74.5%; }
+.mobile-ten { width: 83%; }
+.mobile-eleven { width: 91.5%; }
+.mobile-twelve { width: 100%; }
+
+.mobile-full {
+  clear: both;
+  float: none;
+  width: 100%;
+  margin: 10px 0 0 0;
+  display: block;
+}
+.mobile-full:first-child {
+  margin-top: 0;
+}
+.mobile-center {
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}
+.mobile-center:first-child { margin-left: auto; }
+.mobile-center-text {
+  text-align: center;
+}
+.mobile-left { float: left; }
+.mobile-right { float: right; }
+.mobile-no-float { float: none; }
+
+.container, .mobile-container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Mobile Tables */
+table th,
+table td {
+  padding: 4px;
+}
+
+.no-mobile { display: none; }
+.show-mobile { display: block; }
+
+/**************************************
+CUSTOM STYLES
+***************************************/

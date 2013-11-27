@@ -1,0 +1,62 @@
+/****************************************************************************
+_tablet.scss
+
+Site Name:
+Author:
+Date:
+
+As the name suggests, this is the CSS for tablet browsers. Please put your custom
+CSS after the note.
+*****************************************************************************/
+.container, .tablet-container {
+  width: $tablet-container;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Tablet Grid
+* For stacking full width columns, please use the new class .tablet-full */
+.tablet-one { width: 6.5%; }
+.tablet-two { width: 15%; }
+.tablet-three { width: 23.5%; }
+.tablet-four { width: 32%; }
+.tablet-five { width: 40.5%; }
+.tablet-six { width: 49.0%; }
+.tablet-seven { width: 57.5%; }
+.tablet-eight { width: 66%; }
+.tablet-nine { width: 74.5%; }
+.tablet-ten { width: 83%; }
+.tablet-eleven { width: 91.5%; }
+.tablet-twelve { width: 100%; }
+
+.tablet-full {
+  clear: both;
+  float: none;
+  width: 100%;
+  margin: 10px 0 0 0;
+  display: block;
+}
+.tablet-full:first-child {
+  margin-top: 0;
+}
+
+.tablet-center {
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}
+.tablet-left { float: left; }
+.tablet-right { float: right; }
+.tablet-no-float { float: none; }
+
+.tablet-center:first-child { margin-left: auto; }
+.tablet-center-text {
+  text-align: center;
+}
+
+.no-tablet { display: none; }
+.show-tablet { display: block; }
+
+/**************************************
+CUSTOM STYLES
+***************************************/
