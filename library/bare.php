@@ -14,36 +14,36 @@ Let's start the fun!
 *********************/
 
 // Initialize important functions
-add_action('after_setup_theme', 'smash_it', 16);
+add_action('after_setup_theme', 'bare_init', 16);
 
-function smash_it() {
+function bare_init() {
 
 	// launching operation cleanup
-	add_action('init', 'smashing_head_cleanup');
+	add_action('init', 'bare_head_cleanup');
 	// remove WP version from RSS
-	add_filter('the_generator', 'smashing_rss_version');
+	add_filter('the_generator', 'bare_rss_version');
 	// remove pesky injected css for recent comments widget
-	add_filter('wp_head', 'smashing_remove_wp_widget_recent_comments_style',1);
+	add_filter('wp_head', 'bare_remove_wp_widget_recent_comments_style',1);
 	// clean up comment styles in the head
-	add_action('wp_head', 'smashing_remove_recent_comments_style', 1);
+	add_action('wp_head', 'bare_remove_recent_comments_style', 1);
 	// clean up gallery output in wp
-	add_filter('gallery_style', 'smashing_gallery_style');
+	add_filter('gallery_style', 'bare_gallery_style');
 
 	// enqueue base scripts and styles
-	add_action('wp_enqueue_scripts', 'smashing_scripts_and_styles', 999);
+	add_action('wp_enqueue_scripts', 'bare_scripts_and_styles', 999);
 
 	// launching this stuff after theme setup
-	smashing_theme_support();
+	bare_theme_support();
 
 	// adding sidebars to Wordpress (these are created in functions.php)
-	add_action( 'widgets_init', 'smashing_register_sidebars' );
-	// adding the smashing search form (created in functions.php)
-	add_filter( 'get_search_form', 'smashing_wpsearch' );
+	add_action( 'widgets_init', 'bare_register_sidebars' );
+	// adding the bare search form (created in functions.php)
+	add_filter( 'get_search_form', 'bare_wpsearch' );
 
 	// cleaning up random code around images
-	add_filter( 'the_content', 'smashing_filter_ptags_on_images' );
+	add_filter( 'the_content', 'bare_filter_ptags_on_images' );
 	// cleaning up excerpt
-	add_filter( 'excerpt_more', 'smashing_excerpt_more' );
+	add_filter( 'excerpt_more', 'bare_excerpt_more' );
 
 } /* end smash_it */
 
@@ -53,7 +53,7 @@ Remove and Add things that is needed for Smashing to work.
 Feel free to add or comment out things that you need.
 *********************/
 
-function smashing_head_cleanup() {
+function bare_head_cleanup() {
 	// category feeds
 	// remove_action( 'wp_head', 'feed_links_extra', 3 );
 	// post and comment feeds
@@ -73,31 +73,31 @@ function smashing_head_cleanup() {
 	// WP version
 	remove_action( 'wp_head', 'wp_generator' );
 	// remove WP version from css
-	add_filter( 'style_loader_src', 'smashing_remove_wp_ver_css_js', 9999 );
+	add_filter( 'style_loader_src', 'bare_remove_wp_ver_css_js', 9999 );
 	// remove Wp version from scripts
-	add_filter( 'script_loader_src', 'smashing_remove_wp_ver_css_js', 9999 );
+	add_filter( 'script_loader_src', 'bare_remove_wp_ver_css_js', 9999 );
 
-} /* end smashing head cleanup */
+} /* end bare head cleanup */
 
 // remove WP version from RSS
-function smashing_rss_version() { return ''; }
+function bare_rss_version() { return ''; }
 
 // remove WP version from scripts
-function smashing_remove_wp_ver_css_js( $src ) {
+function bare_remove_wp_ver_css_js( $src ) {
 	if ( strpos( $src, 'ver=' ) )
 		$src = remove_query_arg( 'ver', $src );
 	return $src;
 }
 
 // remove injected CSS for recent comments widget
-function smashing_remove_wp_widget_recent_comments_style() {
+function bare_remove_wp_widget_recent_comments_style() {
 	if ( has_filter( 'wp_head', 'wp_widget_recent_comments_style' ) ) {
 		remove_filter( 'wp_head', 'wp_widget_recent_comments_style' );
 	}
 }
 
 // remove injected CSS from recent comments widget
-function smashing_remove_recent_comments_style() {
+function bare_remove_recent_comments_style() {
 	global $wp_widget_factory;
 	if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
 		remove_action( 'wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style') );
@@ -105,7 +105,7 @@ function smashing_remove_recent_comments_style() {
 }
 
 // remove injected CSS from gallery
-function smashing_gallery_style($css) {
+function bare_gallery_style($css) {
 	return preg_replace( "!<style type='text/css'>(.*?)</style>!s", '', $css );
 }
 
@@ -115,13 +115,15 @@ SCRIPTS & ENQUEUEING
 *********************/
 
 // loading jquery, reply script, and necessary scripts for BASE
-function smashing_scripts_and_styles() {
+function bare_scripts_and_styles() {
 	global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
 	if (!is_admin()) {
 		// modernizr (without media query polyfill)
-		wp_register_script( 'smashing-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
+		wp_register_script( 'bare-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
 		// register main stylesheet
-		wp_register_style( 'smashing-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
+		wp_register_style( 'bare-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
+    wp_register_style('mnav-stylesheet', get_stylesheet_directory_uri() . '/library/css/mnav/mnav.css', array(), '', 'all');
+    wp_register_style('mnav-theme', get_stylesheet_directory_uri() . '/library/css/mnav/mnav-theme.css', array(), '', 'all');
     
     /*
      * To add another stylesheet:
@@ -136,9 +138,8 @@ function smashing_scripts_and_styles() {
 			wp_enqueue_script( 'comment-reply' );
 		}
 		//adding scripts file in the footer
-		wp_register_script('smashing-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true);
-    wp_register_script('default-js', get_stylesheet_directory_uri() . '/library/js/library/default.js', array( 'jquery' ), '', true);
-    wp_register_script('shiv-js', get_stylesheet_directory_uri() . '/library/js/library/shiv.js', array( 'jquery' ), '', true);
+    wp_register_script('mnav-js', get_stylesheet_directory_uri() . '/library/js/libs/mnav.min.js', array('jquery'), '', true);
+		wp_register_script('bare-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true);
     
     /*
      * To add another script:
@@ -149,16 +150,19 @@ function smashing_scripts_and_styles() {
      */
     
 		// enqueue styles and scripts
-		wp_enqueue_script( 'smashing-modernizr' );
-		wp_enqueue_style( 'smashing-stylesheet' );
-		wp_enqueue_style( 'smashing-ie-only' );
+		wp_enqueue_script( 'bare-modernizr' );
+		wp_enqueue_style( 'bare-stylesheet' );
+		wp_enqueue_style('mnav-stylesheet');
+    wp_enqueue_style('mnav-theme');
+    
 		/*
 		I recommend using a plugin to call jQuery
 		using the google cdn. That way it stays cached
 		and your site will load faster.
 		*/
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'smashing-js' );
+		wp_enqueue_script( 'bare-js' );
+    wp_enqueue_script('mnav-js');
 
 	}
 }
@@ -168,7 +172,7 @@ THEME SUPPORT
 *********************/
 
 // Adding WP 3+ Functions & Theme Support
-function smashing_theme_support() {
+function bare_theme_support() {
 	// wp thumbnails (sizes handled in functions.php)
 	add_theme_support( 'post-thumbnails' );
 	// default thumb size
@@ -209,13 +213,13 @@ function smashing_theme_support() {
 	// registering wp3+ menus
 	register_nav_menus(
 		array(
-			'main-nav'     => __('Main Menu', 'smashingtheme'),   // main nav in header
-      'sub-nav'      => __('Secondary Main Menu', 'smashingtheme'), // sub main menu (maybe a menu above the footer?
+			'main-nav'     => __('Main Menu', 'baretheme'),   // main nav in header
+      'sub-nav'      => __('Secondary Main Menu', 'baretheme'), // sub main menu (maybe a menu above the footer?
       // Add more if you need more menus but three should be enough
-			'footer-links' => __('Footer Links', 'smashingtheme') // secondary nav in footer
+			'footer-links' => __('Footer Links', 'baretheme') // secondary nav in footer
 		)
 	);
-} /* end smashing theme support */
+} /* end bare theme support */
 
 
 /*********************
@@ -223,12 +227,12 @@ MENUS & NAVIGATION
 *********************/
 
 // the main menu
-function smashing_main_nav() {
+function bare_main_nav() {
 	// display the wp3 menu if available
 	wp_nav_menu(array(
 		'container' => false,                           // remove nav container
 		'container_class' => 'menu section',           // class of container (should you choose to use it)
-		'menu' => __( 'The Main Menu', 'smashingtheme' ),  // nav name
+		'menu' => __( 'The Main Menu', 'baretheme' ),  // nav name
 		'menu_class' => 'nav top-nav container center',         // adding custom nav class
 		'theme_location' => 'main-nav',                 // where it's located in the theme
 		'before' => '',                                 // before the menu
@@ -236,17 +240,17 @@ function smashing_main_nav() {
 		'link_before' => '',                            // before each link
 		'link_after' => '',                             // after each link
 		'depth' => 0,                                   // limit the depth of the nav
-		'fallback_cb' => 'smashing_main_nav_fallback'      // fallback function
+		'fallback_cb' => 'bare_main_nav_fallback'      // fallback function
 	));
-} /* end smashing main nav */
+} /* end bare main nav */
 
 // the footer menu (should you choose to use one)
-function smashing_footer_links() {
+function bare_footer_links() {
 	// display the wp3 menu if available
 	wp_nav_menu(array(
 		'container' => '',                              // remove nav container
 		'container_class' => 'footer-links section',   // class of container (should you choose to use it)
-		'menu' => __( 'Footer Links', 'smashingtheme' ),   // nav name
+		'menu' => __( 'Footer Links', 'baretheme' ),   // nav name
 		'menu_class' => 'nav footer-nav section',      // adding custom nav class
 		'theme_location' => 'footer-links',             // where it's located in the theme
 		'before' => '',                                 // before the menu
@@ -254,12 +258,12 @@ function smashing_footer_links() {
 		'link_before' => '',                            // before each link
 		'link_after' => '',                             // after each link
 		'depth' => 0,                                   // limit the depth of the nav
-		'fallback_cb' => 'smashing_footer_links_fallback'  // fallback function
+		'fallback_cb' => 'bare_footer_links_fallback'  // fallback function
 	));
-} /* end smashing footer link */
+} /* end bare footer link */
 
 // this is the fallback for header menu
-function smashing_main_nav_fallback() {
+function bare_main_nav_fallback() {
 	wp_page_menu( array(
 		'show_home' => true,
 		'menu_class' => 'nav top-nav section',      // adding custom nav class
@@ -272,7 +276,7 @@ function smashing_main_nav_fallback() {
 }
 
 // this is the fallback for footer menu
-function smashing_footer_links_fallback() {
+function bare_footer_links_fallback() {
 	/* you can put a default here if you like */
 }
 
@@ -280,9 +284,9 @@ function smashing_footer_links_fallback() {
 RELATED POSTS FUNCTION
 *********************/
 
-// Related Posts Function (call using smashing_related_posts(); )
-function smashing_related_posts() {
-	echo '<ul id="smashing-related-posts">';
+// Related Posts Function (call using bare_related_posts(); )
+function bare_related_posts() {
+	echo '<ul id="bare-related-posts">';
 	global $post;
 	$tags = wp_get_post_tags( $post->ID );
 	if($tags) {
@@ -300,19 +304,19 @@ function smashing_related_posts() {
 				<li class="related_post"><a class="entry-unrelated" href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></li>
 			<?php endforeach; }
 		else { ?>
-			<?php echo '<li class="no_related_post">' . __( 'No Related Posts Yet!', 'smashingtheme' ) . '</li>'; ?>
+			<?php echo '<li class="no_related_post">' . __( 'No Related Posts Yet!', 'baretheme' ) . '</li>'; ?>
 		<?php }
 	}
 	wp_reset_query();
 	echo '</ul>';
-} /* end smashing related posts function */
+} /* end bare related posts function */
 
 /*********************
 PAGE NAVI
 *********************/
 
 // Numeric Page Navi (built into the theme by default)
-function smashing_page_navi() {
+function bare_page_navi() {
 	global $wp_query;
 	$bignum = 999999999;
 	if ( $wp_query->max_num_pages <= 1 )
@@ -340,21 +344,21 @@ RANDOM CLEANUP ITEMS
 *********************/
 
 // remove the p from around imgs (http://css-tricks.com/snippets/wordpress/remove-paragraph-tags-from-around-images/)
-function smashing_filter_ptags_on_images($content){
+function bare_filter_ptags_on_images($content){
 	return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
 }
 
 // This removes the annoying […] to a Read More link
-function smashing_excerpt_more($more) {
+function bare_excerpt_more($more) {
 	global $post;
 	// edit here if you like
-	return '...  <a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __( 'Read', 'smashingtheme' ) . get_the_title($post->ID).'">'. __( 'Read more &raquo;', 'smashingtheme' ) .'</a>';
+	return '...  <a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __( 'Read', 'baretheme' ) . get_the_title($post->ID).'">'. __( 'Read more &raquo;', 'baretheme' ) .'</a>';
 }
 
 /*
  * returns a link to the list of the author's posts.
  */
-function smashing_get_the_author_posts_link() {
+function bare_get_the_author_posts_link() {
 	global $authordata;
 	if ( !is_object( $authordata ) )
 		return false;

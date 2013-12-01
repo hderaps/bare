@@ -57,6 +57,6 @@
 					<?php bloginfo('description'); ?>
 				</div>
         <nav id="main-top-nav" role="navigation" class="section row row-one">
-          <?php smashing_main_nav(); ?>
+          <?php bare_main_nav(); ?>
         </nav>
 			</header>

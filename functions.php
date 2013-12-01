@@ -23,7 +23,7 @@ sidebars, comments, ect.
 	- custom google+ integration
 	- adding custom fields to user profiles
 */
-require_once( 'library/smashing.php' ); // if you remove this, bones will break
+require_once( 'library/bare.php' ); // if you remove this, bones will break
 /*
 2. library/custom-post-type.php
 	- an example custom post type
@@ -48,8 +48,8 @@ require_once( 'library/custom-post-type.php' ); // you can disable this if you l
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
-add_image_size( 'smashing-thumb-600', 600, 150, true );
-add_image_size( 'smashing-thumb-300', 300, 100, true );
+add_image_size( 'bare-thumb-600', 600, 150, true );
+add_image_size( 'bare-thumb-300', 300, 100, true );
 /*
 to add more sizes, simply copy a line from above
 and change the dimensions & name. As long as you
@@ -73,11 +73,11 @@ you like. Enjoy!
 /************* ACTIVE SIDEBARS ********************/
 
 // Sidebars & Widgetizes Areas
-function smashing_register_sidebars() {
+function bare_register_sidebars() {
 	register_sidebar(array(
 		'id' => 'sidebar1',
-		'name' => __( 'Sidebar 1', 'smashingtheme' ),
-		'description' => __( 'The first (primary) sidebar.', 'smashingtheme' ),
+		'name' => __( 'Sidebar 1', 'baretheme' ),
+		'description' => __( 'The first (primary) sidebar.', 'baretheme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
@@ -113,7 +113,7 @@ function smashing_register_sidebars() {
 /************* COMMENT LAYOUT *********************/
 
 // Comment Layout
-function smashing_comments( $comment, $args, $depth ) {
+function bare_comments( $comment, $args, $depth ) {
    $GLOBALS['comment'] = $comment; ?>
 	<li <?php comment_class(); ?>>
 		<article id="comment-<?php comment_ID(); ?>" class="clearfix">
@@ -131,13 +131,13 @@ function smashing_comments( $comment, $args, $depth ) {
 				?>
 				<img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=32" class="load-gravatar avatar avatar-48 photo" height="32" width="32" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
 				<?php // end custom gravatar call ?>
-				<?php printf(__( '<cite class="fn">%s</cite>', 'smashingtheme' ), get_comment_author_link()) ?>
+				<?php printf(__( '<cite class="fn">%s</cite>', 'baretheme' ), get_comment_author_link()) ?>
 				<time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'bonestheme' )); ?> </a></time>
-				<?php edit_comment_link(__( '(Edit)', 'smashingtheme' ),'  ','') ?>
+				<?php edit_comment_link(__( '(Edit)', 'baretheme' ),'  ','') ?>
 			</header>
 			<?php if ($comment->comment_approved == '0') : ?>
 				<div class="alert alert-info">
-					<p><?php _e( 'Your comment is awaiting moderation.', 'smashingtheme' ) ?></p>
+					<p><?php _e( 'Your comment is awaiting moderation.', 'baretheme' ) ?></p>
 				</div>
 			<?php endif; ?>
 			<section class="comment_content clearfix">
@@ -152,10 +152,10 @@ function smashing_comments( $comment, $args, $depth ) {
 /************* SEARCH FORM LAYOUT *****************/
 
 // Search Form
-function smashing_wpsearch($form) {
+function bare_wpsearch($form) {
 	$form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >
-	<label class="screen-reader-text" for="s">' . __( 'Search for:', 'smashingtheme' ) . '</label>
-	<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_attr__( 'Search the Site...', 'smashingtheme' ) . '" />
+	<label class="screen-reader-text" for="s">' . __( 'Search for:', 'baretheme' ) . '</label>
+	<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_attr__( 'Search the Site...', 'baretheme' ) . '" />
 	<input type="submit" id="searchsubmit" value="' . esc_attr__( 'Search' ) .'" />
 	</form>';
 	return $form;

@@ -3,7 +3,7 @@
 A Wordpress template skeleton based on <a href="http://themble.com/bones/">Bones</a> using the <a href="http://matthewhartman.github.io/base/"BASE</a> template.
 
 Developer: **Karl Castillo**<br/>
-License: **MIT**
+License: **MIT**<br/>
 Status: **Under Development**
 
 ##Added Features
