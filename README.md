@@ -1,4 +1,4 @@
-#Smashing
+#Bare
 
 A Wordpress template skeleton based on <a href="http://themble.com/bones/">Bones</a> using the <a href="http://matthewhartman.github.io/base/"BASE</a> template.
 
@@ -13,6 +13,6 @@ Status: **Under Development**
 Submit to: https://github.com/koralarts/smashing/issues
 
 ##Todo
-- [ ] Change Images
-- [ ] Add more features
-- [ ] Incorporate Mnav into Smshing
+- [x] Change Images
+- [ ] Setup e-commerce
+- [x] Incorporate Mnav into Bare
