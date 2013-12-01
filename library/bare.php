@@ -1,11 +1,12 @@
 <?php
-/* Smashing!
+/* Bare!
 This is the file that contains the functionality and features of Smashing. For
 custom functions, please put them in functions.php in the root directory of the
 theme.
 
 Modified and Developed by: Karl Castillo
 Based on: Bones (http://themble.com/bones/)
+Grid used: Base (http://matthewhartman.github.io/base/)
 */
 
 /*********************

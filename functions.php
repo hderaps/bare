@@ -1,17 +1,8 @@
 <?php
-/*
-Author: Eddie Machado
-URL: htp://themble.com/bones/
-
-This is where you can drop your custom functions or
-just edit things like thumbnail sizes, header images,
-sidebars, comments, ect.
-*/
-
 /************* INCLUDE NEEDED FILES ***************/
 
 /*
-1. library/bones.php
+1. library/bare.php
 	- head cleanup (remove rsd, uri links, junk css, ect)
 	- enqueueing scripts & styles
 	- theme support functions
@@ -23,7 +14,7 @@ sidebars, comments, ect.
 	- custom google+ integration
 	- adding custom fields to user profiles
 */
-require_once( 'library/bare.php' ); // if you remove this, bones will break
+require_once( 'library/bare.php' ); // if you remove this, bare will break
 /*
 2. library/custom-post-type.php
 	- an example custom post type
@@ -62,9 +53,9 @@ inside the thumbnail function.
 
 For example, to call the 300 x 300 sized image,
 we would use the function:
-<?php the_post_thumbnail( 'bones-thumb-300' ); ?>
+<?php the_post_thumbnail( 'bare-thumb-300' ); ?>
 for the 600 x 100 image:
-<?php the_post_thumbnail( 'bones-thumb-600' ); ?>
+<?php the_post_thumbnail( 'bare-thumb-600' ); ?>
 
 You can change the names and dimensions to whatever
 you like. Enjoy!
@@ -94,8 +85,8 @@ function bare_register_sidebars() {
 
 	register_sidebar(array(
 		'id' => 'sidebar2',
-		'name' => __( 'Sidebar 2', 'bonestheme' ),
-		'description' => __( 'The second (secondary) sidebar.', 'bonestheme' ),
+		'name' => __( 'Sidebar 2', 'baretheme' ),
+		'description' => __( 'The second (secondary) sidebar.', 'baretheme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
@@ -132,7 +123,7 @@ function bare_comments( $comment, $args, $depth ) {
 				<img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=32" class="load-gravatar avatar avatar-48 photo" height="32" width="32" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
 				<?php // end custom gravatar call ?>
 				<?php printf(__( '<cite class="fn">%s</cite>', 'baretheme' ), get_comment_author_link()) ?>
-				<time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'bonestheme' )); ?> </a></time>
+				<time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'baretheme' )); ?> </a></time>
 				<?php edit_comment_link(__( '(Edit)', 'baretheme' ),'  ','') ?>
 			</header>
 			<?php if ($comment->comment_approved == '0') : ?>
