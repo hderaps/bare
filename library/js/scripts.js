@@ -1,14 +1,6 @@
 /*
-Bones Scripts File
-Author: Eddie Machado
-
-This file should contain any js scripts you want to add to the site.
-Instead of calling it in the header or throwing it inside wp_head()
-this file will be called automatically in the footer so as not to
-slow the page load.
-
+Bare Scripts File
 */
-
 // IE8 ployfill for GetComputed Style (for Responsive Script below)
 if (!window.getComputedStyle) {
 	window.getComputedStyle = function(el, pseudo) {
@@ -27,7 +19,7 @@ if (!window.getComputedStyle) {
 	}
 }
 
-// as the page loads, call these scripts
+// Put all scripts that you need to load on DOM ready
 jQuery(document).ready(function($) {
 	$('#main-top-nav').Mnav(); 
 }); /* end of as page load scripts */

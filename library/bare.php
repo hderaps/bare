@@ -234,7 +234,7 @@ function bare_main_nav() {
 		'container' => false,                           // remove nav container
 		'container_class' => 'menu section',           // class of container (should you choose to use it)
 		'menu' => __( 'The Main Menu', 'baretheme' ),  // nav name
-		'menu_class' => 'nav top-nav container center',         // adding custom nav class
+		'menu_class' => 'nav top-nav container',         // adding custom nav class
 		'theme_location' => 'main-nav',                 // where it's located in the theme
 		'before' => '',                                 // before the menu
 		'after' => '',                                  // after the menu
@@ -267,7 +267,7 @@ function bare_footer_links() {
 function bare_main_nav_fallback() {
 	wp_page_menu( array(
 		'show_home' => true,
-		'menu_class' => 'nav top-nav section',      // adding custom nav class
+		'menu_class' => 'nav top-nav container',      // adding custom nav class
 		'include'     => '',
 		'exclude'     => '',
 		'echo'        => true,

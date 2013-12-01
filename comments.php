@@ -1,6 +1,6 @@
 <?php
 /*
-The comments page for Bones
+The comments page for Bare
 */
 
 // Do not delete these lines
