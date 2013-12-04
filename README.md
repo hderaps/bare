@@ -14,5 +14,5 @@ Submit to: https://github.com/koralarts/smashing/issues
 
 ##Todo
 - [x] Change Images
-- [ ] Setup e-commerce
+- [x] Setup e-commerce (Woocommerce)
 - [x] Incorporate Mnav into Bare

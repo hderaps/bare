@@ -29,7 +29,7 @@ require_once( 'library/custom-post-type.php' ); // you can disable this if you l
 	- adding custom login css
 	- changing text in footer of admin
 */
-// require_once( 'library/admin.php' ); // this comes turned off by default
+require_once( 'library/admin.php' ); // this comes turned off by default
 /*
 4. library/translation/translation.php
 	- adding support for other languages
@@ -152,5 +152,57 @@ function bare_wpsearch($form) {
 	return $form;
 } // don't remove this bracket!
 
+/************* WOO Commerce Functions **************/
+/* Uncomment below if you want Woocommerce support */
 
+ /*
+  remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+  remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+
+  add_action('woocommerce_before_main_content', 'baretheme', 10);
+  add_action('woocommerce_after_main_content', 'baretheme', 10);
+
+  function my_theme_wrapper_start() {
+    echo '<section id="main">';
+  }
+
+  function my_theme_wrapper_end() {
+    echo '</section>';
+  }
+
+  add_theme_support( 'woocommerce' );
+  */
+
+  /*
+  If you are getting a 406 Error for jquery.cookie.min.js don't fret since it's
+  because that your server thinks it's a bad file even though it's not.
+
+  There are many things that you can do to fix the problem
+  1. You can call your service provider and ask them to update their settings
+  2. Uncomment the code below and change
+
+  ```
+  wp-content/plugins/woocommerce/assets/js/jquery-cookie/jquery.cookie.js
+  wp-content/plugins/woocommerce/assets/js/jquery-cookie/jquery.cookie.min.js
+  ```
+
+  to
+
+  ```
+  wp-content/plugins/woocommerce/assets/js/jquery-cookie/jquery_cookie.js
+  wp-content/plugins/woocommerce/assets/js/jquery-cookie/jquery_cookie.min.js
+  ```
+  */
+  
+  /*
+  add_action( 'wp_enqueue_scripts', 'custom_frontend_scripts' );
+
+  function custom_frontend_scripts() {
+      global $post, $woocommerce;
+
+      $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+      wp_deregister_script( 'jquery-cookie' ); 
+      wp_register_script( 'jquery-cookie', $woocommerce->plugin_url() . '/assets/js/jquery-cookie/jquery_cookie' . $suffix . '.js', array( 'jquery' ), '1.3.1', true );
+  }
+  */
 ?>

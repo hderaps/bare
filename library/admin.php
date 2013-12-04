@@ -6,13 +6,6 @@ dashboard. Updates to this page are coming soon.
 It's turned off by default, but you can call it
 via the functions file.
 
-Developed by: Eddie Machado
-URL: http://themble.com/bare/
-
-Special Thanks for code & inspiration to:
-@jackmcconnell - http://www.voltronik.co.uk/
-Digging into WP - http://digwp.com/2010/10/customize-wordpress-dashboard/
-
 */
 
 /************* DASHBOARD WIDGETS *****************/
@@ -31,31 +24,13 @@ function disable_default_dashboard_widgets() {
 
 	// removing plugin dashboard boxes
 	remove_meta_box( 'yoast_db_widget', 'dashboard', 'normal' );         // Yoast's SEO Plugin Widget
-
-	/*
-	have more plugin widgets you'd like to remove?
-	share them with us so we can get a list of
-	the most commonly used. :D
-	https://github.com/eddiemachado/bare/issues
-	*/
 }
-
-/*
-Now let's talk about adding your own custom Dashboard widget.
-Sometimes you want to show clients feeds relative to their
-site's content. For example, the NBA.com feed for a sports
-site. Here is an example Dashboard Widget that displays recent
-entries from an RSS Feed.
-
-For more information on creating Dashboard Widgets, view:
-http://digwp.com/2010/10/customize-wordpress-dashboard/
-*/
 
 // RSS Dashboard Widget
 function bare_rss_dashboard_widget() {
 	if ( function_exists( 'fetch_feed' ) ) {
 		include_once( ABSPATH . WPINC . '/feed.php' );               // include the required file
-		$feed = fetch_feed( 'http://themble.com/feed/rss/' );        // specify the source feed
+		$feed = fetch_feed( 'http://bare.karlworks.com/feed/rss/' );        // specify the source feed
 		$limit = $feed->get_item_quantity(7);                        // specify number of items
 		$items = $feed->get_items(0, $limit);                        // create an array of items
 	}
@@ -75,19 +50,68 @@ function bare_rss_dashboard_widget() {
 
 // calling all custom dashboard widgets
 function bare_custom_dashboard_widgets() {
-	wp_add_dashboard_widget( 'bare_rss_dashboard_widget', __( 'Recently on Themble (Customize on admin.php)', 'baretheme' ), 'bare_rss_dashboard_widget' );
+	wp_add_dashboard_widget( 'bare_rss_dashboard_widget', __( 'Recently on Bare (Customize on admin.php)', 'baretheme' ), 'bare_rss_dashboard_widget' );
 	/*
 	Be sure to drop any other created Dashboard Widgets
 	in this function and they will all load.
-	*/
+	*/ 
 }
 
 
 // removing the dashboard widgets
-add_action( 'admin_menu', 'disable_default_dashboard_widgets' );
+add_action('admin_menu', 'disable_default_dashboard_widgets' );
 // adding any custom widgets
 add_action( 'wp_dashboard_setup', 'bare_custom_dashboard_widgets' );
 
+
+/************* CUSTOM OPTIONS PAGE ***************/
+function bare_theme_options_init() {
+  register_setting('bare_options', 'bare_theme_options');
+}
+
+function bare_theme_options_menu() {
+  add_theme_page('Bare Options', 'Bare Options',
+          'edit_theme_options', 'bare_theme_options', 'bare_theme_options_page');
+}
+
+function bare_theme_options_page() {
+  global $select_options;
+  if(!isset($_REQUEST['settings-updated'])) {
+    $_REQUEST['settings-updated'] = false;
+  }
+?>
+  <div>
+    <h2>Bare Theme Options</h2>
+  <?php if($_REQUEST['settings-updated']): ?>
+    <div>
+      <p><strong><?php _e('Options Saved', 'baretheme'); ?></strong></p>
+    </div>
+  <?php endif; ?>
+  </div>
+  
+  <form method="post" action="options.php">
+  <?php settings_fields('bare_options');
+  $opts = get_option('bare_theme_options'); ?>
+  
+  <table>
+    <tr valign="top"><th><?php _e('Navigation Button Position', 'baretheme'); ?></th>
+      <td>
+        <select id="bare_theme_options[navPosition]" name="bare_theme_options[navPosition]">
+          <option value="left" <?php echo ($opts['navPosition'] == 'left') ? 'selected' : ''; ?>>Left</option>
+          <option value="center" <?php echo ($opts['navPosition'] == 'center') ? 'selected' : ''; ?>>Center</option>
+          <option value="right" <?php echo ($opts['navPosition'] == 'right') ? 'selected' : ''; ?>>Right</option>
+        </select>
+      </td>
+    </tr>
+    <?php // For more options, add them here ?>
+  </table>
+  
+  <p><input type="submit" value="Save Options" /></p>
+  </form>
+<? }
+
+add_action('admin_init', 'bare_theme_options_init');
+add_action('admin_menu', 'bare_theme_options_menu');
 
 /************* CUSTOM LOGIN PAGE *****************/
 
@@ -113,16 +137,9 @@ add_filter( 'login_headertitle', 'bare_login_title' );
 
 /************* CUSTOMIZE ADMIN *******************/
 
-/*
-I don't really recommend editing the admin too much
-as things may get funky if WordPress updates. Here
-are a few funtions which you can choose to use if
-you like.
-*/
-
 // Custom Backend Footer
 function bare_custom_admin_footer() {
-	_e( '<span id="footer-thankyou">Developed by <a href="http://yoursite.com" target="_blank">Your Site Name</a></span>. Built using <a href="http://themble.com/bare" target="_blank">Bones</a>.', 'baretheme' );
+	_e( '<span id="footer-thankyou">Developed by <a href="http://yoursite.com" target="_blank">Your Site Name</a></span>. Built using <a href="http://bare.karlworks.com" target="_blank">Bare</a>.', 'baretheme' );
 }
 
 // adding it to the admin area

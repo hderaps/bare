@@ -10,10 +10,9 @@ Grid used: Base (http://matthewhartman.github.io/base/)
 */
 
 /*********************
-SMASHING LAUNCH
+BARE NAKED LAUNCH
 Let's start the fun!
 *********************/
-
 // Initialize important functions
 add_action('after_setup_theme', 'bare_init', 16);
 
@@ -118,6 +117,7 @@ SCRIPTS & ENQUEUEING
 // loading jquery, reply script, and necessary scripts for BASE
 function bare_scripts_and_styles() {
 	global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
+  $opts = get_option( 'bare_theme_options' );
 	if (!is_admin()) {
 		// modernizr (without media query polyfill)
 		wp_register_script( 'bare-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
@@ -164,9 +164,12 @@ function bare_scripts_and_styles() {
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'bare-js' );
     wp_enqueue_script('mnav-js');
-
+    
+    wp_localize_script('bare-js', 'opts', $opts);
 	}
 }
+
+
 
 /*********************
 THEME SUPPORT
