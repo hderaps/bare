@@ -4,7 +4,7 @@ A Wordpress template skeleton based on <a href="http://themble.com/bones/">Bones
 
 Developer: **Karl Castillo**<br/>
 License: **MIT**<br/>
-Status: **Under Development**
+Status: **Testing in progress**
 
 ##Added Features
 - Built in compact navigation for mobile or small screen devices using <a href="https://github.com/koralarts/mnav">Mnav</a>
