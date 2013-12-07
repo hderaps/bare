@@ -1,5 +1,5 @@
 			<footer class="footer" role="contentinfo">
-				<div id="inner-footer" class="container section row">
+				<div id="inner-footer" class="container row">
 					<nav role="navigation">
 							<?php bare_footer_links(); ?>
 					</nav>

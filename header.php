@@ -51,12 +51,12 @@
 
 		<div id="container">
 			<header class="header container-full" role="banner">
-				<div id="inner-header" class="section mobile-container">
+				<div id="inner-header" class="mobile-container">
 					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
 					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 					<?php bloginfo('description'); ?>
 				</div>
-        <nav id="main-top-nav" role="navigation" class="section row row-one">
+        <nav id="main-top-nav" role="navigation" class="row row-one">
           <?php bare_main_nav(); ?>
         </nav>
 			</header>

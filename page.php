@@ -2,7 +2,7 @@
 
 			<div id="content">
 
-				<div id="inner-content" class="container section row">
+				<div id="inner-content" class="section row">
 
 						<div id="main" class="col eight mobile-full" role="main">
 

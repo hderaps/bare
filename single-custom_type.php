@@ -17,7 +17,7 @@ single-bookmarks.php
 
 			<div id="content">
 
-				<div id="inner-content" class="container section row">
+				<div id="inner-content" class="container">
 
 						<div id="main" class="col eight mobile-full" role="main">
 
