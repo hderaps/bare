@@ -5,7 +5,6 @@ You can use this file to make changes to the
 dashboard. Updates to this page are coming soon.
 It's turned off by default, but you can call it
 via the functions file.
-
 */
 
 /************* DASHBOARD WIDGETS *****************/
@@ -57,61 +56,10 @@ function bare_custom_dashboard_widgets() {
 	*/ 
 }
 
-
 // removing the dashboard widgets
 add_action('admin_menu', 'disable_default_dashboard_widgets' );
 // adding any custom widgets
 add_action( 'wp_dashboard_setup', 'bare_custom_dashboard_widgets' );
-
-
-/************* CUSTOM OPTIONS PAGE ***************/
-function bare_theme_options_init() {
-  register_setting('bare_options', 'bare_theme_options');
-}
-
-function bare_theme_options_menu() {
-  add_theme_page('Bare Options', 'Bare Options',
-          'edit_theme_options', 'bare_theme_options', 'bare_theme_options_page');
-}
-
-function bare_theme_options_page() {
-  global $select_options;
-  if(!isset($_REQUEST['settings-updated'])) {
-    $_REQUEST['settings-updated'] = false;
-  }
-?>
-  <div>
-    <h2>Bare Theme Options</h2>
-  <?php if($_REQUEST['settings-updated']): ?>
-    <div>
-      <p><strong><?php _e('Options Saved', 'baretheme'); ?></strong></p>
-    </div>
-  <?php endif; ?>
-  </div>
-  
-  <form method="post" action="options.php">
-  <?php settings_fields('bare_options');
-  $opts = get_option('bare_theme_options'); ?>
-  
-  <table>
-    <tr valign="top"><th><?php _e('Navigation Button Position', 'baretheme'); ?></th>
-      <td>
-        <select id="bare_theme_options[navPosition]" name="bare_theme_options[navPosition]">
-          <option value="left" <?php echo ($opts['navPosition'] == 'left') ? 'selected' : ''; ?>>Left</option>
-          <option value="center" <?php echo ($opts['navPosition'] == 'center') ? 'selected' : ''; ?>>Center</option>
-          <option value="right" <?php echo ($opts['navPosition'] == 'right') ? 'selected' : ''; ?>>Right</option>
-        </select>
-      </td>
-    </tr>
-    <?php // For more options, add them here ?>
-  </table>
-  
-  <p><input type="submit" value="Save Options" /></p>
-  </form>
-<? }
-
-add_action('admin_init', 'bare_theme_options_init');
-add_action('admin_menu', 'bare_theme_options_menu');
 
 /************* CUSTOM LOGIN PAGE *****************/
 

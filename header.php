@@ -50,8 +50,8 @@
 	<body <?php body_class(); ?>>
 
 		<div id="container">
-			<header class="header" role="banner">
-				<div id="inner-header" class="container section">
+			<header class="header container-full" role="banner">
+				<div id="inner-header" class="section mobile-container">
 					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
 					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 					<?php bloginfo('description'); ?>

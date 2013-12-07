@@ -1,6 +1,6 @@
 <?php
 /* Bare!
-This is the file that contains the functionality and features of Smashing. For
+This is the file that contains the functionality and features of Bare. For
 custom functions, please put them in functions.php in the root directory of the
 theme.
 
@@ -14,9 +14,9 @@ BARE NAKED LAUNCH
 Let's start the fun!
 *********************/
 // Initialize important functions
-add_action('after_setup_theme', 'bare_init', 16);
+add_action('after_setup_theme', 'bare_naked', 16);
 
-function bare_init() {
+function bare_naked() {
 
 	// launching operation cleanup
 	add_action('init', 'bare_head_cleanup');
@@ -45,11 +45,11 @@ function bare_init() {
 	// cleaning up excerpt
 	add_filter( 'excerpt_more', 'bare_excerpt_more' );
 
-} /* end smash_it */
+} /* end bare_naked */
 
 /*********************
 CLEAN WP HEAD
-Remove and Add things that is needed for Smashing to work.
+Remove and Add things that is needed for Bare to work.
 Feel free to add or comment out things that you need.
 *********************/
 
@@ -152,9 +152,9 @@ function bare_scripts_and_styles() {
     
 		// enqueue styles and scripts
 		wp_enqueue_script( 'bare-modernizr' );
-		wp_enqueue_style( 'bare-stylesheet' );
 		wp_enqueue_style('mnav-stylesheet');
     wp_enqueue_style('mnav-theme');
+    wp_enqueue_style( 'bare-stylesheet' );
     
 		/*
 		I recommend using a plugin to call jQuery
@@ -234,10 +234,10 @@ MENUS & NAVIGATION
 function bare_main_nav() {
 	// display the wp3 menu if available
 	wp_nav_menu(array(
-		'container' => false,                           // remove nav container
-		'container_class' => 'menu section',           // class of container (should you choose to use it)
+		'container' => 'div',                           // remove nav container
+		'container_class' => 'nav top-nav',           // class of container (should you choose to use it)
 		'menu' => __( 'The Main Menu', 'baretheme' ),  // nav name
-		'menu_class' => 'nav top-nav container',         // adding custom nav class
+		'menu_class' => '',         // adding custom nav class
 		'theme_location' => 'main-nav',                 // where it's located in the theme
 		'before' => '',                                 // before the menu
 		'after' => '',                                  // after the menu
@@ -270,7 +270,7 @@ function bare_footer_links() {
 function bare_main_nav_fallback() {
 	wp_page_menu( array(
 		'show_home' => true,
-		'menu_class' => 'nav top-nav container',      // adding custom nav class
+		'menu_class' => 'nav top-nav',      // adding custom nav class
 		'include'     => '',
 		'exclude'     => '',
 		'echo'        => true,

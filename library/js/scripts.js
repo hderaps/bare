@@ -21,9 +21,7 @@ if (!window.getComputedStyle) {
 
 // Put all scripts that you need to load on DOM ready
 jQuery(document).ready(function($) {
-  $('#main-top-nav').Mnav({
-    'mobileButtonPos': opts.navPosition
-  }); 
+  $('#main-top-nav .nav').Mnav(); 
 }); /* end of as page load scripts */
 
 

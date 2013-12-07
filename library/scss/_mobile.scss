@@ -65,5 +65,9 @@ table td {
 CUSTOM STYLES
 ***************************************/
 #main-top-nav {
-  padding-top: 35px; /* Set to height of Button */
+    .nav {
+      padding-top: 35px; /* Set to height of Button */
+      display: block;
+      position: relative;
+  }
 }
