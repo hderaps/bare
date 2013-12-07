@@ -41,15 +41,13 @@
             // Eww jQuery dropwdown for when we're in desktop view (hover)
             base.$elem.children('.mnav-menu').on('mouseenter', '.mnav-menu-item', function(e) {
                 if(!base.$elem.children('.mnav-mobile-btn').is(':visible')) {
-                    $(this).children('.mnav-submenu:not(li)').slideToggle(base.options.subMenuSpeed);
-                    $(this).children('.mnav-mobile-arrow').toggleClass('mnav-mobile-arrow-mirror');
-                }          
+                    $(this).children('.mnav-submenu').slideToggle(base.options.subMenuSpeed);
+                }
             });
             // Same as abot but when the mouse leaves
             base.$elem.children('.mnav-menu').on('mouseleave', '.mnav-menu-item', function(e) {
                 if(!base.$elem.children('.mnav-mobile-btn').is(':visible')) {
-                    $(this).children('.mnav-submenu:not(li)').slideToggle(base.options.subMenuSpeed);
-                    $(this).children('.mnav-mobile-arrow').toggleClass('mnav-mobile-arrow-mirror');
+                    $(this).children('.mnav-submenu').delay(base.options.delayCloseSpeed).slideToggle(base.options.subMenuSpeed);
                 }          
             });
             if(!base.options.subMenuOpen) {
@@ -113,6 +111,7 @@
         
         mainMenuSpeed: 200,         // How fast will the main menu slide down?
         subMenuSpeed: 200,          // How fast will the sub menu slide down?
+        delayCloseSpeed: 250,       // How long to wait before the dropdown closes
         
         mobileButtonPos: 'right',   // Which side will the button be?
         
