@@ -194,7 +194,9 @@ function bare_theme_support() {
 	// rss thingy
 	add_theme_support('automatic-feed-links');
 
-	// to add header image support go here: http://themble.com/support/adding-header-background-image-support/
+  // Uncomment below for header image support
+  // For more info refer to: http://codex.wordpress.org/Function_Reference/add_theme_support
+  //add_theme_support('custom_header_image');
 
 	// adding post format support
 	add_theme_support( 'post-formats',
