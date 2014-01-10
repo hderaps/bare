@@ -6,7 +6,7 @@
     background-color: #ddd;
 }
 
-.mnav-theme .mnav-submenu-item {
+.mnav-theme .mnav-submenu-item a {
     background-color: #f7f7f7;
 }
 
@@ -29,12 +29,20 @@
 
 @media only screen and (max-width: 740px) {
 
-.mnav-theme .mnav-menu-item {
-    border-bottom: 1px solid #aaa;
-}
+  .mnav-theme .mnav-menu-item:first-of-type {
+    border-top: 1px solid #aaa;
+  }
+  
+  .mnav-theme .mnav-menu-item {
+      border-bottom: 1px solid #aaa;
+  }
 
-.mnav-theme .mnav-submenu-item {
-    border-bottom: 1px solid #aaa;
-}
+  .mnav-theme .mnav-submenu-item a:first-of-type {
+    border-top: 1px solid #aaa;
+  }
+  
+  .mnav-theme .mnav-submenu-item a {
+      border-bottom: 1px solid #aaa;
+  }
 
 }
