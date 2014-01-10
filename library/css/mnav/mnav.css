@@ -1,15 +1,21 @@
-/* Necessary for Mnav
-#ID_OF_CONTAINER {
+#open-nav {
+    display: none;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#nav-demo {
   display: inline-block;
   position: relative;
   width: 100%;
 }
-*/
 
 .mnav-menu {
     margin: 0;
     display: block;
     padding-left: 0;
+    list-style-image: none;
     list-style-type: none;
 }
 
@@ -19,8 +25,8 @@
 
 .mnav-menu-item a {
     display: block;
+    min-height: 20px;
     padding: 10px 10px;
-    height: 35px; /** Height of Arrow Button */
 }
 
 .mnav-submenu {
@@ -28,7 +34,11 @@
     padding-left: 0;
     z-index: 9999;
     display: none;
-    list-style-type: none;
+    list-style-image: none;
+}
+
+.mnav-submenu-item {
+    display: inline;
 }
 
 .mnav-submenu-item a {
@@ -55,7 +65,7 @@
 }
 
 .mnav-mobile-arrow {
-    height: 35px;
+    height: 37px;
     width: 35px;
     padding: 5px;
     display: block;
@@ -75,11 +85,14 @@
 }
 
 @media only screen and (max-width: 739px) { /* Set to width according to BASE */
-/* Necessary for Mnav
-#ID_OF_CONTAINER {
-  padding-top: 30px; Set to height of Button
+#open-nav {
+    display: block;    
 }
-*/
+
+#nav-demo {
+  padding-top: 40px;
+}
+
 .mnav-mobile-btn {
     display: block;
 }
