@@ -137,7 +137,7 @@ STRUCTURE
 }
 
 @mixin text-shadow($horizontal, $vertical, $blur, $color) {
-  text-shadow: $horizonal $vertical $blur $color;
+  text-shadow: $horiztonal $vertical $blur $color;
   filter: dropshadow(color=$color,offx=$horizontal,offy=$vertical);
 }
 
