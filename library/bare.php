@@ -196,7 +196,7 @@ function bare_theme_support() {
 
   // Uncomment below for header image support
   // For more info refer to: http://codex.wordpress.org/Function_Reference/add_theme_support
-  //add_theme_support('custom_header_image');
+  //add_theme_support( 'custom-header' );
 
 	// adding post format support
 	add_theme_support( 'post-formats',
