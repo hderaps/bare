@@ -2,9 +2,9 @@
 
 			<div id="content">
 
-				<div id="inner-content" class="wrap section">
+				<div id="inner-content" class="container-full">
 
-					<div id="main" class="eightcol first section" role="main">
+					<div id="main" class="col eight" role="main">
 						<h1 class="archive-title"><span><?php _e( 'Search Results for:', 'baretheme' ); ?></span> <?php echo esc_attr(get_search_query()); ?></h1>
 
 						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
