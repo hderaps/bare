@@ -10,7 +10,7 @@ Template Name: Custom Page Example
 				<div id="inner-content" class="container">
 						<div id="main" class="col eight mobile-full" role="main">
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-							<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+							<article id="post-<?php the_ID(); ?>" <?php post_class( 'section' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 								<header class="article-header">
 									<h1 class="page-title"><?php the_title(); ?></h1>
 									<p class="byline vcard"><?php
@@ -23,7 +23,7 @@ Template Name: Custom Page Example
 								</section>
 
 								<footer class="article-footer">
-									<p class="clearfix"><?php the_tags( '<span class="tags">' . __( 'Tags:', 'baretheme' ) . '</span> ', ', ', '' ); ?></p>
+									<p class="section"><?php the_tags( '<span class="tags">' . __( 'Tags:', 'baretheme' ) . '</span> ', ', ', '' ); ?></p>
 								</footer>
 								<?php comments_template(); ?>
 							</article>
