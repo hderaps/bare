@@ -9,95 +9,311 @@ As the name suggests, this is the CSS for desktop browsers. Please put your cust
 CSS after the note.
 *****************************************************************************/
 
-/* ==========================================================================
-/* 2.0 - Grid Layout (Responsive)
-   ========================================================================== */
 /* Sections & Content Blocks */
 .section { position: relative; }
 
-
-/* Rows */
-.row { margin: .5em 0; }
-.row-one { margin: 1em 0; }
-.row-two { margin: 2em 0; }
-.row-three { margin: 3em 0; }
-
-.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .container {
   max-width: $desktop-container;
-  @extend .center;
+  margin-left: auto;
+  margin-right: auto;
   padding-left: 10px;
   padding-right: 10px;
 }
 .container-full {
-  max-width: $desktop-container + 20px;
-  @extend .center;
+  max-width: $desktop-container;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Fluid Grid */
 .col {
-  margin-left: 2%;
   float: left;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-.col:first-child { margin-left: 0; }
+[class*="pull-"], [class*="push-"] { position: relative; }
+
+.no-gutter {
+  padding-left: 0;
+  padding-right: 0;
+}
 
 /* Columns */
-.one {
-  width: 6.5%;
-  *width: expression(Math.floor(0.065 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + "px");
+.col-1 {
+  width: 8.33333%; // Fallback if Calc() is not supported
+  width: calc(100% / 12 * 1);
+  width: -webkit-calc(100% / 12 * 1);
+  width: -moz-calc(100% / 12 * 1);
 }
-.two {
-  width: 15%;
-  *width: expression(Math.floor(0.15 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + "px");
+.col-2 {
+  width: 16.66667%; // Fallback if Calc() is not supported
+  width: calc(100% / 12 * 2);
+  width: -webkit-calc(100% / 12 * 2);
+  width: -moz-calc(100% / 12 * 2);
 }
-.three {
-  width: 23.5%;
-  *width: expression(Math.floor(0.235 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + "px");
+.col-3 {
+  width: 25%; // Fallback if Calc() is not supported
+  width: calc(100% / 12 * 3);
+  width: -webkit-calc(100% / 12 * 3);
+  width: -moz-calc(100% / 12 * 3);
 }
-.four {
-  width: 32%;
-  *width: expression(Math.floor(0.32 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + "px");
+.col-4 {
+  width: 33.33333%; // Fallback if Calc() is not supported
+  width: calc(100% / 12 * 4);
+  width: -webkit-calc(100% / 12 * 4);
+  width: -moz-calc(100% / 12 * 4);
 }
-.five {
-  width: 40.5%;
-  *width: expression(Math.floor(0.405 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + "px");
+.col-5 {
+  width: 41.66665%; // Fallback if Calc() is not supported
+  width: calc(100% / 12 * 5);
+  width: -webkit-calc(100% / 12 * 5);
+  width: -moz-calc(100% / 12 * 5);
+}
+.col-6 {
+  width: 50%; // Fallback if Calc() is not supported
+  width: calc(100% / 12 * 6);
+  width: -webkit-calc(100% / 12 * 6);
+  width: -moz-calc(100% / 12 * 6);
+}
+.col-7 {
+  width: 58.33333%; // Fallback if Calc() is not supported
+  width: calc(100% / 12 * 7);
+  width: -webkit-calc(100% / 12 * 7);
+  width: -moz-calc(100% / 12 * 7);
+}
+.col-8 {
+  width: 66.66666%; // Fallback if Calc() is not supported
+  width: calc(100% / 12 * 8);
+  width: -webkit-calc(100% / 12 * 8);
+  width: -moz-calc(100% / 12 * 8);
+}
+.col-9 {
+  width: 75%; // Fallback if Calc() is not supported
+  width: calc(100% / 12 * 9);
+  width: -webkit-calc(100% / 12 * 9);
+  width: -moz-calc(100% / 12 * 9);
+}
+.col-10 {
+  width: 83.33333%; // Fallback if Calc() is not supported
+  width: calc(100% / 12 * 10);
+  width: -webkit-calc(100% / 12 * 10);
+  width: -moz-calc(100% / 12 * 10);
+}
+.col-11 {
+  width: 91.66666%; // Fallback if Calc() is not supported
+  width: calc(100% / 12 * 11);
+  width: -webkit-calc(100% / 12 * 11);
+  width: -moz-calc(100% / 12 * 11);
+}
+.col-12 { width: 100%; }
 
+.col-1-4 { @extend .col-3; }
+.col-1-2 { @extend .col-6; }
+.col-1-3 { @extend .col-4; }
+.col-3-4 { @extend .col-9; }
+
+/* Push/Pull */
+.push-1 {
+  left: 8.33333%; // Fallback if calc() is not supported
+  left: calc(100% / 12 * 1);
+  left: -webkit-calc(100% / 12 * 1);
+  left: -moz-calc(100% / 12 * 1);
 }
-.six {
-  width: 49.0%;
-  *width: expression(Math.floor(0.49 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + "px");
+.pull-1 {
+  left: -8.33333%; // Fallback if calc() is not supported
+  left: calc(-100% / 12 * 1);
+  left: -webkit-calc(-100% / 12 * 1);
+  left: -moz-calc(-100% / 12 * 1);
 }
-.seven {
-  width: 57.5%;
-  *width: expression(Math.floor(0.575 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + "px");
+.push-2 {
+  left: 16.66667%; // Fallback if calc() is not supported
+  left: calc(100% / 12 * 2);
+  left: -webkit-calc(100% / 12 * 2);
+  left: -moz-calc(100% / 12 * 2);
 }
-.eight {
-  width: 66%;
-  *width: expression(Math.floor(0.66 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + "px");
+.pull-2 {
+  left: -16.66667%; // Fallback if calc() is not supported
+  left: calc(-100% / 12 * 2);
+  left: -webkit-calc(-100% / 12 * 2);
+  left: -moz-calc(-100% / 12 * 2);
 }
-.nine {
-  width: 74.5%;
-  *width: expression(Math.floor(0.745 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + "px");
+.push-3 {
+  left: 25%; // Fallback if calc() is not supported
+  left: calc(100% / 12 * 3);
+  left: -webkit-calc(100% / 12 * 3);
+  left: -moz-calc(100% / 12 * 3);
 }
-.ten {
-  width: 83%;
-  *width: expression(Math.floor(0.83 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + "px");
+.pull-3 {
+  left: -25%; // Fallback if calc() is not supported
+  left: calc(-100% / 12 * 3);
+  left: -webkit-calc(-100% / 12 * 3);
+  left: -moz-calc(-100% / 12 * 3);
 }
-.eleven {
-  width: 91.5%;
-  *width: expression(Math.floor(0.915 * (this.parentNode.offsetWidth - parseFloat(this.parentNode.currentStyle.paddingLeft) - parseFloat(this.parentNode.currentStyle.paddingRight))) + "px");
+.push-4 {
+  left: 33.33333%; // Fallback if calc() is not supported
+  left: calc(100% / 12 * 4);
+  left: -webkit-calc(100% / 12 * 4);
+  left: -moz-calc(100% / 12 * 4);
 }
-.twelve {
-  width: 100%;
+.pull-4 {
+  left: -33.33333%; // Fallback if calc() is not supported
+  left: calc(-100% / 12 * 4);
+  left: -webkit-calc(-100% / 12 * 4);
+  left: -moz-calc(-100% / 12 * 4);
+}
+.push-5 {
+  left: 41.66665%; // Fallback if calc() is not supported
+  left: calc(100% / 12 * 5);
+  left: -webkit-calc(100% / 12 * 5);
+  left: -moz-calc(100% / 12 * 5);
+}
+.pull-5 {
+  left: -41.66665%; // Fallback if calc() is not supported
+  left: calc(-100% / 12 * 5);
+  left: -webkit-calc(-100% / 12 * 5);
+  left: -moz-calc(-100% / 12 * 5);
+}
+.push-6 {
+  left: 50%; // Fallback if calc() is not supported
+  left: calc(100% / 12 * 6);
+  left: -webkit-calc(100% / 12 * 6);
+  left: -moz-calc(100% / 12 * 6);
+}
+.pull-6 {
+  left: -50%; // Fallback if calc() is not supported
+  left: calc(-100% / 12 * 6);
+  left: -webkit-calc(-100% / 12 * 6);
+  left: -moz-calc(-100% / 12 * 6);
+}
+.push-7 {
+  left: 58.33333%; // Fallback if calc() is not supported
+  left: calc(100% / 12 * 7);
+  left: -webkit-calc(100% / 12 * 7);
+  left: -moz-calc(100% / 12 * 7);
+}
+.pull-7 {
+  left: -58.33333%; // Fallback if calc() is not supported
+  left: calc(-100% / 12 * 7);
+  left: -webkit-calc(-100% / 12 * 7);
+  left: -moz-calc(-100% / 12 * 7);
+}
+.push-8 {
+  left: 66.66666%; // Fallback if calc() is not supported
+  left: calc(100% / 12 * 8);
+  left: -webkit-calc(100% / 12 * 8);
+  left: -moz-calc(100% / 12 * 8);
+}
+.pull-8 {
+  left: -66.66666%; // Fallback if calc() is not supported
+  left: calc(-100% / 12 * 8);
+  left: -webkit-calc(-100% / 12 * 8);
+  left: -moz-calc(-100% / 12 * 8);
+}
+.push-9 {
+  left: 75%; // Fallback if calc() is not supported
+  left: calc(100% / 12 * 9);
+  left: -webkit-calc(100% / 12 * 9);
+  left: -moz-calc(100% / 12 * 9);
+}
+.pull-9 {
+  left: -75%; // Fallback if calc() is not supported
+  left: calc(-100% / 12 * 9);
+  left: -webkit-calc(-100% / 12 * 9);
+  left: -moz-calc(-100% / 12 * 9);
+}
+.push-10 {
+  left: 83.33333%; // Fallback if calc() is not supported
+  left: calc(100% / 12 * 10);
+  left: -webkit-calc(100% / 12 * 10);
+  left: -moz-calc(100% / 12 * 10);
+}
+.pull-10 {
+  left: -83.33333%; // Fallback if calc() is not supported
+  left: calc(-100% / 12 * 10);
+  left: -webkit-calc(-100% / 12 * 10);
+  left: -moz-calc(-100% / 12 * 10);
+}
+.push-11 {
+  left: 91.66666%; // Fallback if calc() is not supported
+  left: calc(100% / 12 * 11);
+  left: -webkit-calc(100% / 12 * 11);
+  left: -moz-calc(100% / 12 * 11);
+}
+.pull-11 {
+  left: -91.66666%; // Fallback if calc() is not supported
+  left: calc(-100% / 12 * 11);
+  left: -webkit-calc(-100% / 12 * 11);
+  left: -moz-calc(-100% / 12 * 11);
 }
 
-.quarter { @extend .three; }
-.half { @extend .six; }
-.one-third { @extend .four; }
+/* Rows */
+.row {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+/* ==========================================================================
+/* CSS Helpers / Extras
+   ========================================================================== */
+
+/* Clearfix */
+.clear:before, .clear:after { content: ""; display: table; } .clear:after { clear: both; } .clear { zoom: 1; }
+
+/* Floats */
+.left { float: left; }
+.right { float: right; }
+
+/* Display */
+.block { display: block; }
+.inline { display: inline; }
+.inline-block {
+  display: inline-block;
+  *zoom: 1;
+  *display: inline;
+}
+.none, 
+[hidden],
+.no-desktop {
+  display: none;
+}
+
+/* Font Weights */
+.heavy { font-weight: 900; }
+.strong { font-weight: 700; }
+.normal { font-weight: normal; }
+.thin { font-weight: 300; }
+.italic { font-style: italic; }
+
+/* Font Styles */
+.capitalize { text-transform: capitalize; }
+.uppercase { text-transform: uppercase; }
+
+/* Text Position */
+.left-text { text-align: left; }
+.right-text { text-align: right; }
+.center-text { text-align: center; }
+
+/* Accessibility (offscreen text for screen readers) */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -9999em;
+}
+.visuallyvisible {
+  clip: auto;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  left: 0;
+}
+/* Margin and Padding Reset */
+.no-margin { margin: 0; }
+.no-padding { padding: 0; }
 
 /**************************************
 CUSTOM STYLES

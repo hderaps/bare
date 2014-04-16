@@ -7,7 +7,6 @@
 				</div>
 			</footer>
 		</div>
-
 		<?php // all js scripts are loaded in library/bare.php ?>
 		<?php wp_footer(); ?>
 	</body>
