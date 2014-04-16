@@ -26,3 +26,7 @@ the _tablet whithin the tablet block and the _mobile within the mobile block.
 @media only screen and (max-width: $mobile-breakpoint) {
   @import "_mobile";
 }
+
+@media print {
+  @import "_print";
+}

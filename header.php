@@ -56,7 +56,7 @@
 					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 					<?php bloginfo('description'); ?>
 				</div>
-        <nav id="main-top-nav" role="navigation" class="row row-one">
+        <nav id="main-top-nav" role="navigation" class="row">
           <?php bare_main_nav(); ?>
         </nav>
 			</header>
