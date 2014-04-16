@@ -9,11 +9,7 @@ Status: **Testing in progress**
 ##Added Features
 - Built in compact navigation for mobile or small screen devices using <a href="https://github.com/koralarts/mnav">Mnav</a>
 - Added Woocommerce Theme Support (See functions.php for more info)
+- Built in <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>
 
 ##Bugs &/or Fixes
 Submit to: https://github.com/koralarts/bare/issues
-
-##Todo
-- [x] Change Images
-- [x] Setup e-commerce (Woocommerce)
-- [x] Incorporate Mnav into Bare
