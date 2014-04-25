@@ -9,7 +9,8 @@ As the name suggests, this is the CSS for mobile browsers. Please put your custo
 CSS after the note.
 *****************************************************************************/
 
-.container, .mobile-container {
+.container {
+  max-width: $mobile-container;
   padding-left: 20px;
   padding-right: 20px;
   margin-left: auto;
