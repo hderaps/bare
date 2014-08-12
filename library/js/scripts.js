@@ -59,3 +59,18 @@ jQuery(document).ready(function($) {
 	w.addEventListener( "orientationchange", restoreZoom, false );
 	w.addEventListener( "devicemotion", checkTilt, false );
 })( this );
+
+/*! Browser Update Notification
+ https://browser-update.org/
+*/
+
+var $buoop = {}; 
+$buoop.ol = window.onload; 
+window.onload=function(){ 
+ try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
+ var e = document.createElement("script"); 
+ e.setAttribute("type", "text/javascript"); 
+ e.setAttribute("src", "//browser-update.org/update.js"); 
+ document.body.appendChild(e); 
+} 
+

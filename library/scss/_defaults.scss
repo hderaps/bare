@@ -42,7 +42,7 @@ html { font-size: 100%; }
    ========================================================================== */
 /* Body */
 body {
-  font-family: sans-serif;
+  font-family: $sans-serif;
   @include font-size(16);
   @include line-height(21);
   color: #434343;
@@ -364,90 +364,22 @@ input[type=radio] {
   }
 }
 
-button, input { line-height: normal; }
-button, select { text-transform: none; }
 
-/* Buttons */
-button, 
-html input[type="button"], 
-input[type="reset"], 
-input[type="submit"] {
-  cursor: pointer;
-  -webkit-appearance: button;
-  cursor: pointer;
-  *overflow: visible;
-}
-button[disabled], 
-html input[disabled] { cursor: default; }
 
-input[type="search"] {
-  -webkit-appearance: textfield;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-}
-input[type="search"]::-webkit-search-cancel-button, 
-input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
-button::-moz-focus-inner, 
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
-textarea {
-  overflow: auto;
-  vertical-align: top;
-  resize: none;
-}
 
-/* Custom Buttons */
-.button {
-  border: 0;
-  padding: 1em 3em;
-  background-color: #e74b3c;
-  color: #fff;
-  text-decoration: none;
-  @extend .center-text;
-  @extend .inline-block;
-  position: relative;
+/* Responsive Video 
+   ========================================================================== */
+.video-container {
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    position: relative;
 }
-.button:hover {
-  background-color: #fc5547;
-}
-.button:active {
-  top: 1px;
-}
-
-.grey-button {
-  background-color: #eee;
-  color: #434343;
-}
-.grey-button:hover {
-  background-color: #f1f1f1;
-}
-
-.button[disabled],
-.button.disabled {
-  color: #999;
-  background-color: #f1f1f1;
-}
-
-.unstyled-button {
-  @include font-size(16);
-  color: #27ae61;
-  text-decoration: underline;
-  border: 0;
-  background: transparent;
-  height: auto;
-  padding: 0;
-  cursor: pointer;
-  outline: 0;
-  &:hover {
-  text-decoration: none;
-  } // end hover
-}
-.unstyled-button[disabled],
-.unstyled-button.disabled {
-  text-decoration: none;
-  color: #999;
-  background-color: #ccc;
+.video-container iframe, .video-container object, .video-container embed {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }

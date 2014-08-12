@@ -49,7 +49,7 @@
 
 	<body <?php body_class(); ?>>
 
-		<div id="container">
+		<div class="container">
 			<header class="header container-full" role="banner">
 				<div id="inner-header" class="mobile-container">
 					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
