@@ -33,7 +33,7 @@ which includes:
 /* Resets */
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary { display: block; }
-html, button, input, select, textarea { font-family: sans-serif; }
+html, button, input, select, textarea { font-family: $sans-serif; }
 body, form, fieldset, legend, input, select, textarea, button { margin: 0; }
 html { font-size: 100%; }
 
@@ -212,7 +212,7 @@ mark {
 /* Code */
 code, kbd, pre, samp {
   word-wrap: break-word;
-  font-family: 'courier new', monospace, serif;
+  font-family: $serif;
   @include font-size(13);
   line-height: normal;
   font-weight: normal;
