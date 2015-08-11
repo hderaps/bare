@@ -17,8 +17,8 @@ The comments page for Bare
 <?php // You can start editing here. ?>
 
 <?php if ( have_comments() ) : ?>
-	<h3 id="comments" class="h2"><?php comments_number( __( '<span>No</span> Responses', 'baretheme' ), __( '<span>One</span> Response', 'baretheme' ), _n( '<span>%</span> Response', '<span>%</span> Responses', get_comments_number(), 'baretheme' ) );?> to &#8220;<?php the_title(); ?>&#8221;</h3>
-	<nav id="comment-nav">
+	<h3 id="comments" class="h2 col col-12 mobile-full"><?php comments_number( __( '<span>No</span> Responses', 'baretheme' ), __( '<span>One</span> Response', 'baretheme' ), _n( '<span>%</span> Response', '<span>%</span> Responses', get_comments_number(), 'baretheme' ) );?> to &#8220;<?php the_title(); ?>&#8221;</h3>
+	<nav id="comment-nav" class="col col-12 mobile-full">
 		<ul class="clear">
 				<li><?php previous_comments_link() ?></li>
 				<li><?php next_comments_link() ?></li>
@@ -27,7 +27,7 @@ The comments page for Bare
 	<ol class="commentlist">
 		<?php wp_list_comments( 'type=comment&callback=bare_comments' ); ?>
 	</ol>
-	<nav id="comment-nav">
+	<nav id="comment-nav" class="col col-12 mobile-full">
 		<ul class="clear">
 				<li><?php previous_comments_link() ?></li>
 				<li><?php next_comments_link() ?></li>
